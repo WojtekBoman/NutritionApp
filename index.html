@@ -7,6 +7,60 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="content">
+        <div id="input">
+            <form action="submit">
+                <label for="query">Query: </label>
+                <input id="query" name="query" type="text">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div id="output"></div>
+    </div>
+
     <script src="./api.js"></script>
+    <script>
+        // Temporary DOM
+        const output = document.getElementById("output");
+        const form = document.querySelector("form");
+        const query = document.getElementById("query");
+        let recipes = [];
+        
+        const updateRecipes = () => {
+            output.innerHTML = '';
+            recipes.forEach(r => {
+                let div = document.createElement("div");
+                let a = document.createElement("a");
+                a.setAttribute("target", "_blank");
+                a.className = "recipeLink";
+                a.href = r.url;
+                a.style.display = "flex";
+                a.style.margin = "10px";
+                a.style.alignItems = "center";
+                a.style.border = "2px solid black";
+                let image = document.createElement("img");
+                image.setAttribute("src", r.image);
+                image.style.height = "150px";
+                image.style.padding = "10px";
+                let label = document.createElement("a");
+                label.innerHTML = r.label;
+                label.style.fontSize = "30px";
+
+                a.append(image, label);
+                div.appendChild(a);
+                output.appendChild(div);
+            })
+        }
+
+        form.onsubmit = async e => {
+            e.preventDefault();
+            // if(query.value == 0) return;
+            RecipeAPI.fetchRecipes(query.value, {to: 50, diet: "low-carb"})
+            .then((r) => {recipes = r; updateRecipes();})
+            .catch(err => console.log(err));
+        }
+        
+
+    </script>
 </body>
 </html>
