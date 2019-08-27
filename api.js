@@ -36,30 +36,30 @@ const RecipeAPI = {
     }
 }
 
-const calorieCalculator = (weight, height, age, gender, activityLevel = 0, bodyFat) => {
+const calorieCalculator = (weight, height, age, gender, activityLevel = 0, bodyFat = 0) => {
     let bmr;
-    if(bodyFat === undefined) {
+    if(bodyFat == 0) {
         bmr = gender === 'female' ? 
         9.247 * weight + 3.098 * height - 4.330 * age + 447.593 : 
         13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
     } else {
         bmr = 370 + 21.6 * (1 - bodyFat) * weight;
     }
-    switch (activityLevel) {
+    switch (parseInt(activityLevel)) {
         case 1: // Sedentary: little or no exercise
-            return bmr * 1.2;
+            return Math.floor(bmr * 1.2);
         case 2: // Light: exercise 1-3 times/week
-            return bmr * 1.375;
+            return Math.floor(bmr * 1.375);
         case 3: // Moderate: exercise 4-5 times/week
-            return bmr * 1.465;
+            return Math.floor(bmr * 1.465);
         case 4: // Active: daily exercise or intense exercise 3-4 times/week
-            return bmr * 1.55;
+            return Math.floor(bmr * 1.55);
         case 5: // Very Active: intense exercise 6-7 times/week
-            return bmr * 1.725;
+            return Math.floor(bmr * 1.725);
         case 6: // Extra Active: very intense exercise daily, or physical job
-            return bmr * 1.9;
+            return Math.floor(bmr * 1.9);
         default: // case 0 - Basal Metabolic Rate (BMR)
-            return bmr;
+            return Math.floor(bmr);
         /*
         Exercise: 15-30 minutes of elevated heart rate activity.
         Intense exercise: 45-120 minutes of elevated heart rate activity.
@@ -72,7 +72,7 @@ const calorieCalculator = (weight, height, age, gender, activityLevel = 0, bodyF
 }
 
 const caloriesLocal = calories => {
-    if(calories !== undefined){
+    if(calories != undefined){
         localStorage.setItem('calories', ''+calories);
         return calories;
     }

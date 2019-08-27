@@ -9,10 +9,27 @@
 <body>
     <div id="content">
         <div id="input">
-            <form action="submit">
+            <form id="form-query" action="submit">
                 <label for="query">Query: </label>
                 <input id="query" name="query" type="text">
+                <label for="calories">Calories per day: </label>
+                <input id="calories" name="calories" type="text">
                 <input type="submit" value="Search">
+            </form>
+            <form id="form-calories" action="submit">
+                <label for="weight">*Weight: </label>
+                <input id="weight" name="weight" type="text">
+                <label for="height">*Height: </label>
+                <input id="height" name="height" type="text">
+                <label for="age">*Age: </label>
+                <input id="age" name="age" type="text">
+                <label for="gender">*Gender: </label>
+                <input id="gender" name="gender" type="text">
+                <label for="activity-level">Activity level: </label>
+                <input id="activity-level" name="activity-level" type="text">
+                <label for="body-fat">Body fat: </label>
+                <input id="body-fat" name="body-fat" type="text">
+                <input type="submit" value="Calculate">
             </form>
         </div>
         <div id="output"></div>
@@ -22,8 +39,21 @@
     <script>
         // Temporary DOM
         const output = document.getElementById("output");
-        const form = document.querySelector("form");
-        const query = document.getElementById("query");
+        const formQuery = {
+            form: document.getElementById("form-query"),
+            query: document.getElementById("query"),
+            inputCalories: document.getElementById("calories")
+        }
+        const formCalories = {
+            form: document.getElementById("form-calories"),
+            weight: document.getElementById("weight"),
+            height: document.getElementById("height"),
+            age: document.getElementById("age"),
+            gender: document.getElementById("gender"),
+            activityLevel: document.getElementById("activity-level"),
+            bodyFat: document.getElementById("body-fat")
+        }
+        let input = {};
         let recipes = [];
         
         const updateRecipes = () => {
@@ -52,9 +82,9 @@
             })
         }
 
-        form.onsubmit = async e => {
+        formQuery.form.onsubmit = async e => {
             e.preventDefault();
-            let calories = caloriesLocal();
+            let calories = caloriesLocal(formQuery.inputCalories.value);
             const caloriesPerDish = {
                 breakfast: calories * 0.25,
                 snack1: calories * 0.15,
@@ -66,7 +96,7 @@
             promises = [];
             for (const cal in caloriesPerDish) {
                 let rand = Math.floor(Math.random() * 100);
-                promises.push(RecipeAPI.fetchRecipes(query.value, {
+                promises.push(RecipeAPI.fetchRecipes(formQuery.query.value, {
                     from: rand, 
                     to: rand+1, 
                     calories: Math.floor(0.95 * caloriesPerDish[cal]) + '-' + Math.floor(1.05 * caloriesPerDish[cal])
@@ -78,7 +108,25 @@
             updateRecipes();
         }
         
-        
+        formCalories.form.onsubmit = e => {
+            e.preventDefault();
+            formQuery.inputCalories.value = calorieCalculator(formCalories.weight.value, formCalories.height.value, formCalories.age.value, formCalories.gender.value, formCalories.activityLevel.value, formCalories.bodyFat.value);
+            
+            localStorage.setItem('weight', formCalories.weight.value);
+            localStorage.setItem('height', formCalories.height.value);
+            localStorage.setItem('age', formCalories.age.value);
+            localStorage.setItem('gender', formCalories.gender.value);
+            localStorage.setItem('activityLevel', formCalories.activityLevel.value);
+            localStorage.setItem('bodyFat', formCalories.bodyFat.value);
+        }
+
+        formQuery.inputCalories.value = caloriesLocal();
+        formCalories.weight.value = localStorage.getItem('weight');
+        formCalories.height.value = localStorage.getItem('height');
+        formCalories.age.value = localStorage.getItem('age');
+        formCalories.gender.value = localStorage.getItem('gender');
+        formCalories.activityLevel.value = localStorage.getItem('activityLevel');
+        formCalories.bodyFat.value = localStorage.getItem('bodyFat');
 
     </script>
 </body>
