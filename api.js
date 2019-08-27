@@ -1,8 +1,16 @@
 const RecipeAPI = {
-    _connectionLink: "https://api.edamam.com/search?app_id=ca1ac17c&app_key=055822c03f44a06cf5a82223df807b1b",
-    getConnectionLinkFromInput: function(q = '', input = {}) {
-        console.log(input);
-        return this._connectionLink + 
+    _connectionLinks: [
+        "https://api.edamam.com/search?app_id=ca1ac17c&app_key=055822c03f44a06cf5a82223df807b1b",
+        "https://api.edamam.com/search?app_id=215a5b95&app_key=7d9525f9296cf6f78a6ce91a397e1eb1",
+        "https://api.edamam.com/search?app_id=54efdf2f&app_key=6979cacf2f7c5af6cd8e28a74a6bf35d",
+        "https://api.edamam.com/search?app_id=22a1b92d&app_key=e939ba8dc28ac9e412bbca210ea258c3",
+        "https://api.edamam.com/search?app_id=2e04c106&app_key=a9c3321a95172c0b818b7508539a35b3"
+    ],
+    _lastConnectionLink: 0,//Math.floor(Math.random()*5),
+    getConnectionLinkFromInput: function(q, input={}) {
+        if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
+        console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
+        return this._connectionLinks[this._lastConnectionLink] + 
             (q == undefined ? '&q=' : '&q=' + q) +
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
@@ -62,3 +70,12 @@ const calorieCalculator = (weight, height, age, gender, activityLevel = 0, bodyF
         */
     }
 }
+
+const caloriesLocal = calories => {
+    if(calories !== undefined){
+        localStorage.setItem('calories', ''+calories);
+        return calories;
+    }
+    
+    return parseInt(localStorage.getItem('calories')) || 2800;
+} 

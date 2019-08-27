@@ -43,7 +43,7 @@
                 image.style.height = "150px";
                 image.style.padding = "10px";
                 let label = document.createElement("a");
-                label.innerHTML = r.label;
+                label.innerHTML = r.label + ': ' + Math.floor(r.calories / r.yield) + ' calories / serving';
                 label.style.fontSize = "30px";
 
                 a.append(image, label);
@@ -54,11 +54,30 @@
 
         form.onsubmit = async e => {
             e.preventDefault();
-            // if(query.value == 0) return;
-            RecipeAPI.fetchRecipes(query.value, {to: 50, diet: "low-carb"})
-            .then((r) => {recipes = r; updateRecipes();})
-            .catch(err => console.log(err));
+            let calories = caloriesLocal();
+            const caloriesPerDish = {
+                breakfast: calories * 0.25,
+                snack1: calories * 0.15,
+                lunch: calories * 0.30,
+                dinner: calories * 0.20,
+                snack2: calories * 0.1
+            }
+            recipes = [];
+            promises = [];
+            for (const cal in caloriesPerDish) {
+                let rand = Math.floor(Math.random() * 100);
+                promises.push(RecipeAPI.fetchRecipes(query.value, {
+                    from: rand, 
+                    to: rand+1, 
+                    calories: Math.floor(0.95 * caloriesPerDish[cal]) + '-' + Math.floor(1.05 * caloriesPerDish[cal])
+                })
+                .then((r) => {recipes.push(r[0]);})
+                .catch(err => console.log(err)));
+            }
+            await Promise.all(promises);
+            updateRecipes();
         }
+        
         
 
     </script>
