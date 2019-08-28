@@ -1,3 +1,27 @@
+const FoodAPI = {
+    _connectionLink: "https://api.edamam.com/api/food-database/parser?app_id=92765610&app_key=106f940d8c4fe8ff994334bd0090abb7",
+    getConnectionLinkFromInput: function(ingr, input={}) {
+        return this._connectionLink + 
+            (ingr == undefined ? '&ingr=' : '&ingr=' + ingr) +
+            (input.from === undefined ? '' : '&from=' + input.from) +
+            (input.to === undefined ? '' : '&to=' + input.to) +
+            (input.health === undefined ? '' : '&health=' + input.health) +
+            (input.calories === undefined ? '' : '&calories=' + input.calories) +
+            (input.page === undefined ? '' : '&page=' + input.page) +
+            (input.calories === undefined ? '' : '&calories=' + input.calories) +
+            (input.category === undefined ? '' : '&category=' + input.category) +
+            (input.categoryLabel === undefined ? '' : '&categoryLabel=' + input.categoryLabel);
+    },
+    fetchFood: async function(ingr, input) {
+        let conn = this.getConnectionLinkFromInput(ingr, input)
+        let food = await fetch(conn)
+            .then(response => response.json())
+            .then(data => data.hints.map( d => d.food))
+            .catch(err => console.log(err));
+        return food;
+    }
+}
+
 const RecipeAPI = {
     _connectionLinks: [
         "https://api.edamam.com/search?app_id=ca1ac17c&app_key=055822c03f44a06cf5a82223df807b1b",
@@ -6,7 +30,7 @@ const RecipeAPI = {
         "https://api.edamam.com/search?app_id=22a1b92d&app_key=e939ba8dc28ac9e412bbca210ea258c3",
         "https://api.edamam.com/search?app_id=2e04c106&app_key=a9c3321a95172c0b818b7508539a35b3"
     ],
-    _lastConnectionLink: 0,//Math.floor(Math.random()*5),
+    _lastConnectionLink: 0,
     getConnectionLinkFromInput: function(q, input={}) {
         if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
         console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
@@ -30,8 +54,6 @@ const RecipeAPI = {
             .then(response => response.json())
             .then(data => data.hits.map( d => d.recipe))
             .catch(err => console.log(err));
-        // console.table(recipes);
-        console.log(recipes);
         return recipes;
     }
 }
