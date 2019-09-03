@@ -103,12 +103,18 @@ const caloriesLocal = calories => {
 } 
 
 
-/*
+
 
 let input = {
-    q: "",
-    from:0,
-    to:10
+    q: "", // Query
+    from:0, 
+    to:10,  
+    ingr: 10, // count of ingredients
+    diet: "balanced",
+    mealType: "lunch",
+    
+    //calories: ""
+
 }
 
 let Query = document.querySelector("#query");
@@ -122,4 +128,27 @@ const readRecipesFromApi = async (input) => {
     let recipes = await RecipeAPI.fetchRecipes(input);
     console.log(recipes);
 }
-*/
+
+let submitButton = document.querySelector("#form-query input[type=submit]");
+
+submitButton.addEventListener('click',async (e) => {
+    e.preventDefault();
+    let recipes = await RecipeAPI.fetchRecipes(input);
+    
+    // Tutaj będzie odbywać się dodawanie przepisów na stronkę;
+    // Wybrałem najpotrzebniejsze informacje które powinniśmy umieścić
+    
+    recipes.forEach(recipe => {
+        console.log(recipe);
+        console.log("Label :", recipe.label);
+        console.log("Calories :",recipe.calories);
+        console.log("Health labels :", recipe.healthLabels);
+        console.log("Diet labels :",recipe.dietLabels)
+        console.log("Image :",recipe.image)
+        console.log("Ingredients :");
+        recipe.ingredients.forEach(ing => console.log(ing));
+        console.log("Total weight" , recipe.totalWeight);
+    })
+    
+});
+
