@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+</head>
+
+<body>
+        <div id="content">
+                <div id="input">
+                    <form id="form-query" action="submit">
+                        <label for="query">Query: </label>
+                        <input id="query" name="query" type="text">
+                        <label for="calories">Calories per day: </label>
+                        <input id="calories" name="calories" type="text">
+                        <input type="submit" value="Search">
+                    </form>
+                    <form id="form-calories" action="submit">
+                        <label for="weight">*Weight: </label>
+                        <input id="weight" name="weight" type="text">
+                        <label for="height">*Height: </label>
+                        <input id="height" name="height" type="text">
+                        <label for="age">*Age: </label>
+                        <input id="age" name="age" type="text">
+                        <label for="gender">*Gender: </label>
+                        <input id="gender" name="gender" type="text">
+                        <label for="activity-level">Activity level: </label>
+                        <input id="activity-level" name="activity-level" type="text">
+                        <label for="body-fat">Body fat: </label>
+                        <input id="body-fat" name="body-fat" type="text">
+                        <input type="submit" value="Calculate">
+                    </form>
+                </div>
+                <div id="output"></div>
+  <script src="api.js"></script>
+</body>
+</html>

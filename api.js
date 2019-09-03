@@ -31,11 +31,19 @@ const RecipeAPI = {
         "https://api.edamam.com/search?app_id=2e04c106&app_key=a9c3321a95172c0b818b7508539a35b3"
     ],
     _lastConnectionLink: 0,
+<<<<<<< HEAD
     getConnectionLinkFromInput: function(q, input={}) {
         if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
         console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
         return this._connectionLinks[this._lastConnectionLink] + 
             (q == undefined ? '&q=' : '&q=' + q) +
+=======
+    getConnectionLinkFromInput: function(input={}) {
+        if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
+        console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
+        return this._connectionLinks[this._lastConnectionLink] + 
+            (input.q == undefined ? '&q=' : '&q=' + input.q) +
+>>>>>>> Wojtek
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.ingr === undefined ? '' : '&ingr=' + input.ingr) +
@@ -48,8 +56,13 @@ const RecipeAPI = {
             (input.time === undefined ? '' : '&time=' + input.time) +
             (input.excluded === undefined ? '' : '&excluded=' + input.excluded);
     },
+<<<<<<< HEAD
     fetchRecipes: async function(q, input) {
         let conn = this.getConnectionLinkFromInput(q, input)
+=======
+    fetchRecipes: async function(input) {
+        let conn = this.getConnectionLinkFromInput(input)
+>>>>>>> Wojtek
         let recipes = await fetch(conn)
             .then(response => response.json())
             .then(data => data.hits.map( d => d.recipe))
@@ -100,4 +113,59 @@ const caloriesLocal = calories => {
     }
     
     return parseInt(localStorage.getItem('calories')) || 2800;
+<<<<<<< HEAD
 } 
+=======
+} 
+
+
+
+
+let input = {
+    q: "", // Query
+    from:0, 
+    to:10,  
+    ingr: 10, // count of ingredients
+    diet: "balanced",
+  
+    
+    //calories: ""
+
+}
+
+let Query = document.querySelector("#query");
+
+Query.addEventListener('input',(e)=>{
+    input.q = e.target.value; 
+});
+
+
+const readRecipesFromApi = async (input) => {
+    let recipes = await RecipeAPI.fetchRecipes(input);
+    console.log(recipes);
+}
+
+let submitButton = document.querySelector("#form-query input[type=submit]");
+
+submitButton.addEventListener('click',async (e) => {
+    e.preventDefault();
+    let recipes = await RecipeAPI.fetchRecipes(input);
+    
+    // Tutaj będzie odbywać się dodawanie przepisów na stronkę;
+    // Wybrałem najpotrzebniejsze informacje które powinniśmy umieścić
+    
+    recipes.forEach(recipe => {
+        console.log(recipe);
+        console.log("Label :", recipe.label);
+        console.log("Calories :",recipe.calories);
+        console.log("Health labels :", recipe.healthLabels);
+        console.log("Diet labels :",recipe.dietLabels)
+        console.log("Image :",recipe.image)
+        console.log("Ingredients :");
+        recipe.ingredients.forEach(ing => console.log(ing));
+        console.log("Total weight" , recipe.totalWeight);
+    })
+    
+});
+
+>>>>>>> Wojtek
