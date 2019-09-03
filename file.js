@@ -34,9 +34,10 @@ function searchItem(e) {
 
 function addItem(e) { //dodawanie wybranego hinta do listy itemów
     //items.push(e); //e, czyli wybrany hint
+    let amountVar = toNumber(amount)/100; //dzielimy przez 100 zakładając, że kalorie w API są podane na 100g produktu
     const html = items.map(item => {
         return `
-        <li>${item.name} <span>${item.calories}</span></li>` //
+        <li>${item.name} <span>${toNumber(item.calories)*amountVar}</span></li>` //
     });
     updateCalories();
     hintBody.innerHTML = "";
@@ -45,8 +46,9 @@ function addItem(e) { //dodawanie wybranego hinta do listy itemów
 }
 
 function updateCalories() {
-    caloriesSum = items.map(item => {
-        caloriesSum += item.calories
+    const addedItemsCal = document.querySelectorAll("#itemsbody > li > span") //robię to w ten sposób by liczyć kalorie wraz biorąc po uwagę amount
+        caloriesSum = items.map(item => {
+        caloriesSum += item.calories;
     })
     caloriesBody.innerHtml = caloriesSum;
 }
