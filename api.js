@@ -59,94 +59,49 @@ const RecipeAPI = {
     }
 }
 
-const calorieCalculator = (weight, height, age, gender, activityLevel = 0, bodyFat = 0) => {
-    let bmr;
-    if(bodyFat == 0) {
-        bmr = gender === 'female' ? 
-        9.247 * weight + 3.098 * height - 4.330 * age + 447.593 : 
-        13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
-    } else {
-        bmr = 370 + 21.6 * (1 - bodyFat) * weight;
-    }
-    switch (parseInt(activityLevel)) {
-        case 1: // Sedentary: little or no exercise
-            return Math.floor(bmr * 1.2);
-        case 2: // Light: exercise 1-3 times/week
-            return Math.floor(bmr * 1.375);
-        case 3: // Moderate: exercise 4-5 times/week
-            return Math.floor(bmr * 1.465);
-        case 4: // Active: daily exercise or intense exercise 3-4 times/week
-            return Math.floor(bmr * 1.55);
-        case 5: // Very Active: intense exercise 6-7 times/week
-            return Math.floor(bmr * 1.725);
-        case 6: // Extra Active: very intense exercise daily, or physical job
-            return Math.floor(bmr * 1.9);
-        default: // case 0 - Basal Metabolic Rate (BMR)
-            return Math.floor(bmr);
-        /*
-        Exercise: 15-30 minutes of elevated heart rate activity.
-        Intense exercise: 45-120 minutes of elevated heart rate activity.
-        Very intense exercise: 2+ hours of elevated heart rate activity.
-        +- 500 cal ~= +- 0.5 kg per week
-        max 1 kg per week
-        src: https://www.calculator.net/calorie-calculator.html
-        */
+const calories = {
+    calculator: function(weight, height, age, gender, activityLevel = 0, bodyFat = 0){
+        let bmr;
+        if(bodyFat == 0) {
+            bmr = gender === 'female' ? 
+            9.247 * weight + 3.098 * height - 4.330 * age + 447.593 : 
+            13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
+        } else {
+            bmr = 370 + 21.6 * (1 - bodyFat) * weight;
+        }
+        switch (parseInt(activityLevel)) {
+            case 1: // Sedentary: little or no exercise
+                return this.Calories = Math.floor(bmr * 1.2);
+            case 2: // Light: exercise 1-3 times/week
+                return this.Calories = Math.floor(bmr * 1.375);
+            case 3: // Moderate: exercise 4-5 times/week
+                return this.Calories = Math.floor(bmr * 1.465);
+            case 4: // Active: daily exercise or intense exercise 3-4 times/week
+                return this.Calories = Math.floor(bmr * 1.55);
+            case 5: // Very Active: intense exercise 6-7 times/week
+                return this.Calories = Math.floor(bmr * 1.725);
+            case 6: // Extra Active: very intense exercise daily, or physical job
+                return this.Calories = Math.floor(bmr * 1.9);
+            default: // case 0 - Basal Metabolic Rate (BMR)
+                return this.Calories = Math.floor(bmr);
+            /*
+            Exercise: 15-30 minutes of elevated heart rate activity.
+            Intense exercise: 45-120 minutes of elevated heart rate activity.
+            Very intense exercise: 2+ hours of elevated heart rate activity.
+            +- 500 cal ~= +- 0.5 kg per week
+            max 1 kg per week
+            src: https://www.calculator.net/calorie-calculator.html
+            */
+        }
+    },
+    get Calories(){
+        this._calories =  parseInt(localStorage.getItem('calories')) || null;
+        return this._calories;
+    },
+    set Calories(calories){
+        if(calories != undefined){
+            localStorage.setItem('calories', ''+calories);
+            this._calories = calories;
+        }
     }
 }
-
-const caloriesLocal = calories => {
-    if(calories != undefined){
-        localStorage.setItem('calories', ''+calories);
-        return calories;
-    }
-    
-    return parseInt(localStorage.getItem('calories')) || 2800;
-} 
-
-
-let input = {
-    q: "", // Query
-    from:0, 
-    to:10,  
-    ingr: 10, // count of ingredients
-    diet: "balanced",
-    //calories: ""
-    //mealType
-    //dishType
-}
-
-function reset() {
-    input.q = "";
-    Query.value = "";
-}
-
-
-
-let Query = document.querySelector("#query");
-
-Query.addEventListener('input',(e)=>{
-    input.q = e.target.value; 
-});
-
-let submitButton = document.querySelector("#form-query input[type=submit]");
-
-submitButton.addEventListener('click',async (e) => {
-    e.preventDefault();
-    let recipes = await RecipeAPI.fetchRecipes(input);
-    reset();
-    // Tutaj będzie odbywać się dodawanie przepisów na stronkę;
-    // Wybrałem najpotrzebniejsze informacje które powinniśmy umieścić
-    recipes.forEach(recipe => {
-        console.log(recipe);
-        console.log("Label :", recipe.label);
-        console.log("Calories :",recipe.calories);
-        console.log("Health labels :", recipe.healthLabels);
-        console.log("Diet labels :",recipe.dietLabels)
-        console.log("Image :",recipe.image)
-        console.log("Ingredients :");
-        recipe.ingredients.forEach(ing => console.log(ing));
-        console.log("Total weight" , recipe.totalWeight);
-    })
-    
-});
-
