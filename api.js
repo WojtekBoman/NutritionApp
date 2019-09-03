@@ -110,11 +110,17 @@ let input = {
     to:10,  
     ingr: 10, // count of ingredients
     diet: "balanced",
-  
-    
     //calories: ""
-
+    //mealType
+    //dishType
 }
+
+function reset() {
+    input.q = "";
+    Query.value = "";
+}
+
+
 
 let Query = document.querySelector("#query");
 
@@ -122,21 +128,14 @@ Query.addEventListener('input',(e)=>{
     input.q = e.target.value; 
 });
 
-
-const readRecipesFromApi = async (input) => {
-    let recipes = await RecipeAPI.fetchRecipes(input);
-    console.log(recipes);
-}
-
 let submitButton = document.querySelector("#form-query input[type=submit]");
 
 submitButton.addEventListener('click',async (e) => {
     e.preventDefault();
     let recipes = await RecipeAPI.fetchRecipes(input);
-    
+    reset();
     // Tutaj będzie odbywać się dodawanie przepisów na stronkę;
     // Wybrałem najpotrzebniejsze informacje które powinniśmy umieścić
-    
     recipes.forEach(recipe => {
         console.log(recipe);
         console.log("Label :", recipe.label);
