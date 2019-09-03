@@ -31,19 +31,12 @@ const RecipeAPI = {
         "https://api.edamam.com/search?app_id=2e04c106&app_key=a9c3321a95172c0b818b7508539a35b3"
     ],
     _lastConnectionLink: 0,
-<<<<<<< HEAD
-    getConnectionLinkFromInput: function(q, input={}) {
-        if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
-        console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
-        return this._connectionLinks[this._lastConnectionLink] + 
-            (q == undefined ? '&q=' : '&q=' + q) +
-=======
+
     getConnectionLinkFromInput: function(input={}) {
         if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
         console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
         return this._connectionLinks[this._lastConnectionLink] + 
             (input.q == undefined ? '&q=' : '&q=' + input.q) +
->>>>>>> Wojtek
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.ingr === undefined ? '' : '&ingr=' + input.ingr) +
@@ -56,13 +49,8 @@ const RecipeAPI = {
             (input.time === undefined ? '' : '&time=' + input.time) +
             (input.excluded === undefined ? '' : '&excluded=' + input.excluded);
     },
-<<<<<<< HEAD
-    fetchRecipes: async function(q, input) {
-        let conn = this.getConnectionLinkFromInput(q, input)
-=======
     fetchRecipes: async function(input) {
         let conn = this.getConnectionLinkFromInput(input)
->>>>>>> Wojtek
         let recipes = await fetch(conn)
             .then(response => response.json())
             .then(data => data.hits.map( d => d.recipe))
@@ -113,12 +101,7 @@ const caloriesLocal = calories => {
     }
     
     return parseInt(localStorage.getItem('calories')) || 2800;
-<<<<<<< HEAD
 } 
-=======
-} 
-
-
 
 
 let input = {
@@ -168,4 +151,3 @@ submitButton.addEventListener('click',async (e) => {
     
 });
 
->>>>>>> Wojtek
