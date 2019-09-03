@@ -1,8 +1,8 @@
 const FoodAPI = {
     _connectionLink: "https://api.edamam.com/api/food-database/parser?app_id=92765610&app_key=106f940d8c4fe8ff994334bd0090abb7",
-    getConnectionLinkFromInput: function(ingr, input={}) {
+    getConnectionLinkFromInput: function(input={}) {
         return this._connectionLink + 
-            (ingr == undefined ? '&ingr=' : '&ingr=' + ingr) +
+            (input.ingr == undefined ? '&ingr=' : '&ingr=' + ingr) +
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.health === undefined ? '' : '&health=' + input.health) +
@@ -33,8 +33,9 @@ const RecipeAPI = {
     _lastConnectionLink: 0,
 
     getConnectionLinkFromInput: function(input={}) {
-        if(++this._lastConnectionLink >= this._connectionLinks.length) this._lastConnectionLink = 0 ;
-        console.log('num: ' + this._lastConnectionLink + ' conn: ' + this._connectionLinks[this._lastConnectionLink]);
+        if(++this._lastConnectionLink >= this._connectionLinks.length) 
+            this._lastConnectionLink = 0 ;
+
         return this._connectionLinks[this._lastConnectionLink] + 
             (input.q == undefined ? '&q=' : '&q=' + input.q) +
             (input.from === undefined ? '' : '&from=' + input.from) +
@@ -69,6 +70,7 @@ const calories = {
         } else {
             bmr = 370 + 21.6 * (1 - bodyFat) * weight;
         }
+        
         switch (parseInt(activityLevel)) {
             case 1: // Sedentary: little or no exercise
                 return this.Calories = Math.floor(bmr * 1.2);
