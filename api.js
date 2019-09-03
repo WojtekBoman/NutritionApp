@@ -12,8 +12,8 @@ const FoodAPI = {
             (input.category === undefined ? '' : '&category=' + input.category) +
             (input.categoryLabel === undefined ? '' : '&categoryLabel=' + input.categoryLabel);
     },
-    fetchFood: async function(ingr, input) {
-        let conn = this.getConnectionLinkFromInput(ingr, input)
+    fetchFood: async function(input) {
+        let conn = this.getConnectionLinkFromInput(input)
         let food = await fetch(conn)
             .then(response => response.json())
             .then(data => data.hints.map( d => d.food))
