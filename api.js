@@ -111,7 +111,7 @@ let input = {
     to:10,  
     ingr: 10, // count of ingredients
     diet: "balanced",
-    mealType: "lunch",
+  
     
     //calories: ""
 
