@@ -1,0 +1,52 @@
+.container {
+	display: grid;
+	//grid-template-rows: 1fr 1fr 1fr auto 1fr;
+	padding: 0px 70px;
+}
+
+.header {
+    display: grid;
+	//grid-template-rows: minmax(50px, 100px);
+    background-color: blueviolet;
+    padding: 2rem;
+}
+
+.form {
+    background-color: burlywood;
+    min-height: 100px;
+    padding: 2rem;
+}
+
+.display {
+    background-color: royalblue;
+    min-height: 100px;
+    padding: 2rem;
+}
+
+.main {
+    background-color: darkgreen;
+	min-height: 100px;
+	padding: 2rem;
+}
+
+.main ol li {
+    display: inline;
+    text-decoration: none;
+    padding 0.8rem;
+    margin: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.list1 li {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+
+.footer {
+    background-color: firebrick;
+    min-height: 50px;
+    padding: 2rem;
+}
+
