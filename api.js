@@ -2,7 +2,7 @@ const FoodAPI = {
     _connectionLink: "https://api.edamam.com/api/food-database/parser?app_id=92765610&app_key=106f940d8c4fe8ff994334bd0090abb7",
     getConnectionLinkFromInput: function(input={}) {
         return this._connectionLink + 
-            (input.ingr == undefined ? '&ingr=' : '&ingr=' + ingr) +
+            (input.ingr === undefined ? '&ingr=' : '&ingr=' + input.ingr) +
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.health === undefined ? '' : '&health=' + input.health) +
