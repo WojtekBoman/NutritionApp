@@ -9,26 +9,63 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">nagłówek</div>
-        <div class="form">
-            <div class="input1">wybór jedzenia</div>
-            <div class="input2">ilość</div>
-            <div class="button">jednostka</div>
+        <div class="header">
+            <p class="motto">Nie licz na cud, licz kalorie!</p>
         </div>
+        <div class="form">
+            <ol>
+                <form>
+                    <li>
+                        <label for="wybor">Wybór jedzenia</label>
+                        <input type="text" id="" name="wybor" placeholder="test">
+                    </li>
+                    <li>
+                        <label for="ilosc">Ilość</label>
+                        <input type="text" id="" name="ilosc" placeholder="test">
+                    </li>
+                    <li>
+                        <label for="jednostka">Jednostka</label>
+                        <select id="" name="jednostka" placeholder="test">
+                            <option value="ml">ml (mililitr)</option>
+                            <option value="l">l (litr)</option>
+                            <option value="g">g (gram)</option>
+                            <option value="kg">kg (kilogram)</option>
+                    </li>
+                    <li>
+                        <input type="submit" value="Przelicz">
+                    </li>
+                                     
+                </form>
+            </ol>
         <div class="display">kalorie</div>
         <div class="main">
-            <ol class="temp">
-                <li class="list1">
+            <ol>
+                <li>
                     <ul>
                         <li class="product">nazwa produktu</li>
                         <li class="amount">ilość</li>
+                        <li class="unit">jednostka</li>
                         <li class="calories">kalorie</li>
                     </ul>
                 </li>
-                <li class="list2"></li>
-                <li class="list3"></li>
+                <li class="list2">
+                    <ul>
+                        <li class="product">mleko</li>
+                        <li class="amount">2</li>
+                        <li class="unit">L</li>
+                        <li class="calories">kalorie</li>
+                    </ul>
+                </li>
+                <li class="list3">
+                    <ul>
+                        <li class="product">nazwa produktu</li>
+                        <li class="amount">ilość</li>
+                        <li class="unit">L</li>
+                        <li class="calories">kalorie</li>
+                    </ul>
+                </li>
             </ol>
-            <form>wynik</form>
+            wynik
         </div>
         <div class="footer">niesamowita stopka</div>
     </div>
