@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js_playground</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js" defer></script>
+    <script src="calories.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="inputBar">
+            <input type="text" id="product" placeholder="Product...">
+            <input type="number" id="amount" placeholder="Amount..." min="1">
+            <input type="button" id="submit" onclick="findProduct()" value="Search">
+        </div>
+        <div class="caloriesSum">
+            <hr>
+            <span><h1>Total number of kcal: <span id="number"></span></h1></span>
+            <hr>
+        </div>
+        <div class="products">
+
+        </div>
+    </div>
+    <ul id="hints">
+        <h2>Choose product:</h2>
+    </ul>
+</body>
+</html>
