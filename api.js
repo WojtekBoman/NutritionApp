@@ -1,24 +1,24 @@
 const FoodAPI = {
     _connectionLink: "https://api.edamam.com/api/food-database/parser?app_id=92765610&app_key=106f940d8c4fe8ff994334bd0090abb7",
-    getConnectionLinkFromInput: function(input={}) {
+    getConnectionLinkFromInput: function(input) {
         return this._connectionLink + 
-            (input.ingr === undefined ? '&ingr=' : '&ingr=' + input.ingr) +
+            ('&ingr=' + (input.ingr || '*')) +
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.health === undefined ? '' : '&health=' + input.health) +
             (input.calories === undefined ? '' : '&calories=' + input.calories) +
             (input.page === undefined ? '' : '&page=' + input.page) +
-            (input.calories === undefined ? '' : '&calories=' + input.calories) +
             (input.category === undefined ? '' : '&category=' + input.category) +
             (input.categoryLabel === undefined ? '' : '&categoryLabel=' + input.categoryLabel);
     },
-    fetchFood: async function(input) {
+    fetchFood: async function(input = {}) {
+        if(typeof input != 'object') return [];
         let conn = this.getConnectionLinkFromInput(input)
-        let food = await fetch(conn)
+        let food = fetch(conn)
             .then(response => response.json())
             .then(data => data.hints.map( d => d.food))
-            .catch(err => console.log(err));
-        return food;
+            .catch(err => {console.log(err);});
+        return await food || [];
     }
 }
 
@@ -32,12 +32,12 @@ const RecipeAPI = {
     ],
     _lastConnectionLink: 0,
 
-    getConnectionLinkFromInput: function(input={}) {
+    getConnectionLinkFromInput: function(input) {
         if(++this._lastConnectionLink >= this._connectionLinks.length) 
             this._lastConnectionLink = 0 ;
 
         return this._connectionLinks[this._lastConnectionLink] + 
-            (input.q == undefined ? '&q=' : '&q=' + input.q) +
+            ('&q=' + (input.q || '')) +
             (input.from === undefined ? '' : '&from=' + input.from) +
             (input.to === undefined ? '' : '&to=' + input.to) +
             (input.ingr === undefined ? '' : '&ingr=' + input.ingr) +
@@ -50,18 +50,23 @@ const RecipeAPI = {
             (input.time === undefined ? '' : '&time=' + input.time) +
             (input.excluded === undefined ? '' : '&excluded=' + input.excluded);
     },
-    fetchRecipes: async function(input) {
+    fetchRecipes: async function(input={}) {
+        if(typeof input != 'object') return [];
         let conn = this.getConnectionLinkFromInput(input)
-        let recipes = await fetch(conn)
+        let recipes = fetch(conn)
             .then(response => response.json())
             .then(data => data.hits.map( d => d.recipe))
-            .catch(err => console.log(err));
-        return recipes;
+            .catch(err => {console.log(err)});
+        return await recipes || [];
     }
 }
 
 const calories = {
     calculator: function(weight, height, age, gender, activityLevel = 0, bodyFat = 0){
+        if(!weight || !height || !age || !gender) {
+            console.log( 'Calories calculator: Crucial components not specified!');
+            return null;
+        }
         let bmr;
         if(bodyFat == 0) {
             bmr = gender === 'female' ? 
@@ -101,7 +106,7 @@ const calories = {
         return this._calories;
     },
     set Calories(calories){
-        if(calories != undefined){
+        if(typeof calories === 'number'){
             localStorage.setItem('calories', ''+calories);
             this._calories = calories;
         }
