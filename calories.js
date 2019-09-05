@@ -37,7 +37,9 @@ async function findProduct()
 
     var temporaryProducts = [];
 
-    for(var x = 0; x < 5; x++)
+    var numberOfHints = hints.length >= 5 ? 5 : hints.length
+
+    for(var x = 0; x < numberOfHints; x++)
     {
         temporaryProducts.push(new Product(hints[x].label, Math.floor(hints[x].nutrients.ENERC_KCAL), amount.value));
     }
