@@ -14,7 +14,7 @@ var products = [];
 var form = document.querySelector("form");
 form.addEventListener("submit", findProduct);
 
-async function findProduct()
+async function findProduct(e)
 {
     e.preventDefault();
     document.getElementById("submit").disabled = true;
@@ -56,8 +56,8 @@ function displayHints(temporaryProducts)
         {
             chooseProduct(event, temporaryProducts);
         });
+        hintElement.style.cursor = "pointer";
     }
-
     document.getElementById("hints").style.display = "flex";
 }
 
