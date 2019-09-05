@@ -11,17 +11,15 @@ class Product
 
 var products = [];
 
+var form = document.querySelector("form");
+form.addEventListener("submit", findProduct);
+
 async function findProduct()
 {
+    e.preventDefault();
     document.getElementById("submit").disabled = true;
     var name = document.getElementById("product");
     var amount = document.getElementById("amount");
-
-    if(name.value == "" || amount.value == "")
-    {
-        alert("Don't leave empty spaces!");
-        return;
-    }
 
     var input = {ingr: name.value}
     var hints = await FoodAPI.fetchFood(input);
@@ -29,8 +27,7 @@ async function findProduct()
     if(hints.length == 0)
     {
         alert("Product not found!");
-        name.value = "";
-        amount.value = "";
+        form.reset();
         document.getElementById("submit").disabled = false;
         return;
     }
@@ -44,8 +41,7 @@ async function findProduct()
         temporaryProducts.push(new Product(hints[x].label, Math.floor(hints[x].nutrients.ENERC_KCAL), amount.value));
     }
     displayHints(temporaryProducts);
-    name.value = "";
-    amount.value = "";
+    form.reset();
     document.getElementById("submit").disabled = true;
 }
 
@@ -104,7 +100,7 @@ function addProduct(product)
     var productElement = document.createElement("li");       
     productElement.innerHTML = "<h3>" + product.name + "<br>" + product.totalCalories + " kcal</h3><div style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>";
     document.getElementById("products").appendChild(productElement);
-    productElement.children[1].addEventListener("click", removeItem)
+    productElement.children[1].addEventListener("click", removeItem);
 }
 
 function removeItem(event)
