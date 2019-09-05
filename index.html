@@ -12,8 +12,8 @@
 <body>
     <div class="container">
         <div class="inputBar">
-            <input type="text" id="product" placeholder="Product...">
-            <input type="number" id="amount" placeholder="Amount..." min="1">
+            <input type="text" id="product" placeholder="Product..." required>
+            <input type="number" id="amount" placeholder="Amount..." min="1" required>
             <input type="button" id="submit" onclick="findProduct()" value="Search">
         </div>
         <div class="caloriesSum">
@@ -26,14 +26,9 @@
         </ul>
     </div>
     <ul id="hints">
-        <h2>Choose product:</h2>
+        <div id="menubar">
+            <h2>Choose product:</h2><div onclick="closeHints()" style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>
+        </div>
     </ul>
-    <!-- <div id="dialog">
-        <h3 style="text-align: center">Do you want to delete that product?</h3>
-        <div style="display: flex; justify-content: center;">
-            <input type="button" id="submit" onclick="removeItem()" value="Yes">
-            <input type="button" id="submit" onclick="closeDialog()" value="No">
-        </div>       
-    </div> -->
 </body>
 </html>

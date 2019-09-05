@@ -13,6 +13,7 @@ var products = [];
 
 async function findProduct()
 {
+    document.getElementById("submit").disabled = true;
     var name = document.getElementById("product");
     var amount = document.getElementById("amount");
 
@@ -25,15 +26,27 @@ async function findProduct()
     var input = {ingr: name.value}
     var hints = await FoodAPI.fetchFood(input);
 
+    if(hints.length == 0)
+    {
+        alert("Product not found!");
+        name.value = "";
+        amount.value = "";
+        document.getElementById("submit").disabled = false;
+        return;
+    }
+
     var temporaryProducts = [];
 
-    for(var x = 0; x < 5; x++)
+    var numberOfHints = hints.length >= 5 ? 5 : hints.length
+
+    for(var x = 0; x < numberOfHints; x++)
     {
         temporaryProducts.push(new Product(hints[x].label, Math.floor(hints[x].nutrients.ENERC_KCAL), amount.value));
     }
     displayHints(temporaryProducts);
     name.value = "";
     amount.value = "";
+    document.getElementById("submit").disabled = true;
 }
 
 function displayHints(temporaryProducts)
@@ -50,6 +63,17 @@ function displayHints(temporaryProducts)
     }
 
     document.getElementById("hints").style.display = "flex";
+}
+
+function closeHints()
+{
+    var parent = document.getElementById("hints");
+    while(parent.children.length >= 2)
+    {
+        parent.removeChild(parent.children[1]);
+    }
+    parent.style.display = "none";
+    document.getElementById("submit").disabled = false;
 }
 
 function chooseProduct(event, temporaryProducts)
@@ -70,6 +94,7 @@ function chooseProduct(event, temporaryProducts)
         parent.removeChild(parent.children[1]);
     }
     parent.style.display = "none";
+    document.getElementById("submit").disabled = false;
 }
 
 function addProduct(product)

@@ -128,3 +128,10 @@ body
     background-color: rgb(245, 35, 35);
     border-radius: 20px;
 }
+
+#menubar
+{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
