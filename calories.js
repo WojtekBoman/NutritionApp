@@ -50,7 +50,7 @@ function displayHints(temporaryProducts)
     for(var x = 0; x < temporaryProducts.length; x++)
     {
         var hintElement = document.createElement("li");       
-        hintElement.innerHTML = "<h3>" + temporaryProducts[x].name + "<br>" + temporaryProducts[x].totalCalories + " kcal</h3>"
+        hintElement.innerHTML = `<h3>${temporaryProducts[x].name}<br>${temporaryProducts[x].calories}kcal/100g</h3>`;
         document.getElementById("hints").appendChild(hintElement);
         hintElement.addEventListener("click", function(event)
         {
@@ -98,7 +98,7 @@ function addProduct(product)
     products.push(product);
     document.getElementById("number").innerHTML = parseInt(document.getElementById("number").innerHTML, 10) + product.totalCalories;
     var productElement = document.createElement("li");       
-    productElement.innerHTML = "<h3>" + product.name + "<br>" + product.totalCalories + " kcal</h3><div style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>";
+    productElement.innerHTML = `<h3>${product.name}<br>${product.totalCalories}kcal ${product.amount}g</h3><div style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>`;
     document.getElementById("products").appendChild(productElement);
     productElement.children[1].addEventListener("click", removeItem);
 }
