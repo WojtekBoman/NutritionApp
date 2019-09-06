@@ -30,10 +30,8 @@ async function findRecipes(e)
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
     var input = {q: query.value, calories: calories.value};
-    console.log(input);
     var recipes = await RecipeAPI.fetchRecipes(input);
 
-    console.log(recipes);
     if(recipes.length == 0)
     {
         alert("Recipes not found!");
