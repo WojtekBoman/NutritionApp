@@ -59,7 +59,7 @@ body
     box-sizing: border-box;
 }
 
-#products
+#products, #recipes
 {
     position: relative;
     display: flex;
@@ -71,7 +71,7 @@ body
     padding: 0;
 }
 
-#products > *
+#products > *, #recipes > *
 {
     display: flex;
     width: 90%;

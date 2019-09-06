@@ -7,8 +7,6 @@ class Recipe
     }
 }
 
-var recipes = [];
-
 var form = document.querySelector(".searchForm");
 form.addEventListener("submit", findRecipes);
 
@@ -27,9 +25,11 @@ function showCalc()
 async function findRecipes(e)
 {
     e.preventDefault();
+    document.getElementById("recipes").innerHTML="";
     var calories = document.getElementById("calories");
-    var input = {calories: calories.value}
-    var recipes = await FoodAPI.fetchRecipes(input);
+    var query = document.getElementById("query");
+    var input = {ingr: query.value, calories: calories.value};
+    var recipes = await RecipeAPI.fetchRecipes(input);
 
     if(recipes.length == 0)
     {
@@ -37,6 +37,19 @@ async function findRecipes(e)
         form.reset();
         document.getElementById("submit").disabled = false;
         return;
+    }
+    console.log(recipes);
+    displayRecipes(recipes);
+
+}
+
+function displayRecipes(recipes)
+{
+    for(var x = 0; x < recipes.length; x++)
+    {
+        var recipeElement = document.createElement("li");       
+        recipeElement.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
+        document.getElementById("recipes").appendChild(recipeElement);
     }
 }
 
@@ -46,13 +59,12 @@ async function calculateCalories(e)
     var weight = document.getElementById("weight").value;
     var height = document.getElementById("height").value;
     var age = document.getElementById("age").value;
-    var gender = document.getElementById("male").checked ? document.getElementById("male").value : document.getElementById("female").value;
+    var gender = document.getElementById("male").checked ? "male" : "female";
     var activityLevel = document.getElementById("activityLevel").value;
     var bodyFat = document.getElementById("bodyFat").value==="" ? 0 : document.getElementById("bodyFat").value;
-    console.log(weight, height, age, male, female, gender, activityLevel, bodyFat);
-    //var caloriesCalc = await calories.calculator(weight, height, age, gender, activityLevel, bodyFat);
+    console.log(weight, height, age, gender, activityLevel, bodyFat);
+    var caloriesCalc = await calories.calculator(weight, height, age, gender, activityLevel, bodyFat);
 
-    //document.getElementById("calories").value = caloriesCalc;
-
-
+    document.getElementById("calories").value = caloriesCalc;
 }
+
