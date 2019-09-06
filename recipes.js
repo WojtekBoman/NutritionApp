@@ -39,7 +39,6 @@ async function findRecipes(e,from=0)
     
     var input = {q: query.value, calories: caloriesIn.value, from: from, to: amount};
     var recipes = await RecipeAPI.fetchRecipes(input);
-
     var end = false
     if(recipes.length != selectList.options[selectList.selectedIndex].value)
     {
