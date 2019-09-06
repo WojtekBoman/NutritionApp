@@ -23,16 +23,26 @@ function showCalc()
     }
 }
 
-async function findRecipes(e)
+async function findRecipes(e=undefined,from=0)
 {
-    e.preventDefault();
+    if (e==undefined) 
+    {
+        e.preventDefault();
+    }
+
     document.getElementById("recipes").innerHTML="";
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
-    var selectList = document.getElementById("amount")
-    var amount = selectList.options[selectList.selectedIndex].value;
-    var input = {q: query.value, calories: calories.value, to: amount};
+    var selectList = document.getElementById("amount");
+    var amount = parseInt(selectList.options[selectList.selectedIndex].value, 10) + from;
+    var input = {q: query.value, calories: calories.value, from: from, to: amount};
     var recipes = await RecipeAPI.fetchRecipes(input);
+
+    var end = false
+    if(recipes.length != selectList.options[selectList.selectedIndex].value)
+    {
+        end = true;
+    }
 
     if(recipes.length == 0)
     {
@@ -41,10 +51,10 @@ async function findRecipes(e)
         document.getElementById("submit").disabled = false;
         return;
     }
-    displayRecipes(recipes);
+    displayRecipes(recipes, end);
 }
 
-function displayRecipes(recipes)
+function displayRecipes(recipes, end)
 {
     for(var x = 0; x < recipes.length; x++)
     {
@@ -55,6 +65,13 @@ function displayRecipes(recipes)
         recipeElement.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
         link.appendChild(recipeElement);
         document.getElementById("recipes").appendChild(link);
+    }
+
+    if (end==true){
+        document.getElementById("moreBtn").style.display = "none";
+    }
+    else{
+        document.getElementById("moreBtn").style.display = "block";
     }
 }
 
@@ -71,5 +88,11 @@ async function calculateCalories(e)
 
     document.getElementById("calories").value = caloriesCalc;
     showCalc();
+}
+
+function loadMore()
+{   
+    var from = document.getElementById("recipes").children.length;
+    findRecipes(from);
 }
 
