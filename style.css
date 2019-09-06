@@ -50,6 +50,8 @@ body
 .caloriesSum
 {
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 #products
@@ -69,6 +71,8 @@ body
     display: flex;
     width: 90%;
     margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
     height: 80px;
     border: 1px solid;
     align-items: center;
@@ -99,6 +103,8 @@ body
     width: 100%;
     margin: 5px;
     height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
     border: 1px solid;
     align-items: center;  
 }
@@ -108,26 +114,7 @@ body
     border: none;
 }
 
-#dialog
-{
-    position: absolute;
-    display: none;
-    width: 15%;
-    min-width: 200px;
-    left: 42.5%;
-    top: 20%;
-    margin: 5px;
-    height: 120px;
-    border: 1px solid;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    word-wrap: normal;
-    padding: 10px;
-    z-index: 2;
-    background-color: rgb(245, 35, 35);
-    border-radius: 20px;
-}
+
 
 #menubar
 {
