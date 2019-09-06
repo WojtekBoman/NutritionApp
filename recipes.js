@@ -2,7 +2,7 @@ class Recipe
 {
     constructor(name, calories)
     {
-        this.name = name;
+        this.label = label;
         this.calories = calories;
     }
 }
@@ -28,13 +28,13 @@ async function findRecipes(e)
     document.getElementById("recipes").innerHTML="";
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
-    var input = {ingr: query.value, calories: calories.value};
+    var input = {q: query.value, calories: calories.value};
     var recipes = await RecipeAPI.fetchRecipes(input);
 
     if(recipes.length == 0)
     {
         alert("Recipes not found!");
-        form.reset();
+        query.reset();
         document.getElementById("submit").disabled = false;
         return;
     }
@@ -45,9 +45,12 @@ function displayRecipes(recipes)
 {
     for(var x = 0; x < recipes.length; x++)
     {
-        var recipeElement = document.createElement("li");       
+        var link = document.createElement('a');
+        link.setAttribute('href', recipes[x].url);
+        var recipeElement = document.createElement("li");
         recipeElement.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
-        document.getElementById("recipes").appendChild(recipeElement);
+        link.appendChild(recipeElement);
+        document.getElementById("recipes").appendChild(link);
     }
 }
 
