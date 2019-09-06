@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js_playground</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js" defer></script>
+    <script src="calories.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <form class="inputBar searchForm"> 
+            <input type="text" id="query" placeholder="What do you like..." required>
+            <input type="number" id="calories" placeholder="Calories per day..." min="1" max="10000" required>
+            <input type="button" id="calc" value="Calc">
+            <input type="submit" id="submit" value="Search">
+        </form>
+        <form class="inputBar calculatorForm">
+            <div>
+                <input type="number" id="weight" placeholder="Weight..." min="1" max="500" required><label for="weight">kg</label>
+            </div>
+            <div>
+                <input type="number" id="height" max="300" placeholder="Height..." min="1" required><label for="height">cm</label>
+            </div>
+            <div>
+                <input type="number" id="age" placeholder="Age..." min="1" max="110" required>
+            </div>
+            <div>
+                <input type="radio" id="male" name="gender" value="male" checked><label for="male">Male</label>
+            </div>
+            <div>
+                <input type="radio" id="gender" name="gender" value="female"><label for="female">Female</label>
+            </div>
+            <div><input type="range" id="activity" min="0" max="5" value="3"><label for="activity">Activity level</label></div>
+            <input type="submit" id="submit" value="Calculate">
+        </form>
+        
+        <div class="caloriesSum">
+            <hr>
+            <span><h1>Total number of kcal: <span id="number">0</span></h1></span>
+            <hr>
+        </div>
+        <ul id="products">
+
+        </ul>
+    </div>
+    <ul id="hints">
+        <div id="menubar">
+            <h2>Choose product:</h2><div onclick="closeHints()" style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>
+        </div>
+    </ul>
+</body>
+</html>
