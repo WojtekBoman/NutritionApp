@@ -12,6 +12,7 @@ form.addEventListener("submit", findRecipes);
 
 var calculatorForm = document.querySelector(".calculatorForm");
 calculatorForm.addEventListener("submit", calculateCalories);
+calculatorForm.style.display = "none";
 
 function showCalc()
 {
@@ -47,6 +48,7 @@ function displayRecipes(recipes)
     {
         var link = document.createElement('a');
         link.setAttribute('href', recipes[x].url);
+        link.setAttribute('target', "_blank");
         var recipeElement = document.createElement("li");
         recipeElement.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
         link.appendChild(recipeElement);
