@@ -1,11 +1,7 @@
-class Recipe
-{
-    constructor(name, calories)
-    {
-        this.label = label;
-        this.calories = calories;
-    }
-}
+var caloriesIn="";
+var query="";
+var selectList="";
+var amount="";
 
 var form = document.querySelector(".searchForm");
 form.addEventListener("submit", findRecipes);
@@ -24,19 +20,24 @@ function showCalc()
     }
 }
 
-async function findRecipes(e=undefined,from=0)
+async function findRecipes(e,from=0)
 {
-    if (e==undefined) 
+    if (e!=undefined) 
     {
         e.preventDefault();
+        caloriesIn = document.getElementById("calories");
+        query = document.getElementById("query");
+        selectList = document.getElementById("amount");
+        amount = parseInt(selectList.options[selectList.selectedIndex].value, 10) + from;
+        document.getElementById("recipes").innerHTML="";
     }
 
-    document.getElementById("recipes").innerHTML="";
-    var calories = document.getElementById("calories");
-    var query = document.getElementById("query");
-    var selectList = document.getElementById("amount");
-    var amount = parseInt(selectList.options[selectList.selectedIndex].value, 10) + from;
-    var input = {q: query.value, calories: calories.value, from: from, to: amount};
+    else
+    {
+        amount += parseInt(selectList.options[selectList.selectedIndex].value,10);
+    }
+    
+    var input = {q: query.value, calories: caloriesIn.value, from: from, to: amount};
     var recipes = await RecipeAPI.fetchRecipes(input);
 
     var end = false
@@ -48,8 +49,9 @@ async function findRecipes(e=undefined,from=0)
     if(recipes.length == 0)
     {
         alert("Recipes not found!");
-        query.reset();
+        document.getElementById("query").value="";
         document.getElementById("submit").disabled = false;
+        document.getElementById("moreBtn").style.display = "none";
         return;
     }
     displayRecipes(recipes, end);
@@ -92,8 +94,9 @@ async function calculateCalories(e)
 
 function loadMore()
 {   
+    var e=undefined;
     var from = document.getElementById("recipes").children.length;
-    findRecipes(from);
+    findRecipes(e, from);
 }
 function setStorage(weight, height, age, gender, activityLevel, bodyFat)
 {

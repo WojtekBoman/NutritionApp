@@ -24,12 +24,13 @@ const FoodAPI = {
 
 const RecipeAPI = {
     _connectionLinks: [
-        "https://api.edamam.com/search?app_id=9ea284a6&app_key=34e7f4da7fdd4031c53bd924d6f02417",
-        "https://api.edamam.com/search?app_id=c2f53b41&app_key=af3198639e5b4ed7971b4d80702329cf",
-        "https://api.edamam.com/search?app_id=731a0df4&app_key=0502c4eb98b6b02b6a2f0fee7ae96f99",
-        "https://api.edamam.com/search?app_id=26ae3e57&app_key=5713bfd876b05823c70f1ef1b2fb1287",
-        "https://api.edamam.com/search?app_id=c28a6c19&app_key=6017b4e205da5f82a125c901703793d8",
-        "https://api.edamam.com/search?app_id=271f06d0&app_key=35220018a054de2fb816c339f29f2c6c"
+        "https://api.edamam.com/search?app_id=091f80e0&app_key=941d77a59ee8f05820454d3df5a915ed",
+        "https://api.edamam.com/search?app_id=ed3e5751&app_key=0175317f803162b107325a91763da0d3",
+        "https://api.edamam.com/search?app_id=07097059&app_key=02799ce6ab06cee68b588407b0727478",
+        "https://api.edamam.com/search?app_id=d5f1a000&app_key=053edbcffa9946e776666a888138034d",
+        "https://api.edamam.com/search?app_id=19ed340e&app_key=78113e7b3b566abf9a43c905a8a7c61c",
+        "https://api.edamam.com/search?app_id=0f1cef91&app_key=5d1b45eeb3b86f11cb5d7e08262f0981",
+        "https://api.edamam.com/search?app_id=c3e26f93&app_key=e6a6344bdf035e55a594a5c5f6896069"
     ],
     _lastConnectionLink: 0,
 
