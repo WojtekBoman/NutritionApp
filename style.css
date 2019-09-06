@@ -119,6 +119,11 @@ body
     border: none;
 }
 
+#moreBtn
+{
+    display:none;
+}
+
 
 
 #menubar
