@@ -80,7 +80,7 @@ function setStorage(weight, height, age, gender, activityLevel, bodyFat)
     localStorage.setItem('age', age);
     localStorage.setItem('gender', gender);
     localStorage.setItem('activityLevel', activityLevel);
-    localStorage.setItem('bodyFat', bodyFat);
+    localStorage.setItem('bodyFat', bodyFat * 100);
 }
 
 function getStorage()
