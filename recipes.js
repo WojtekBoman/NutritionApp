@@ -29,7 +29,9 @@ async function findRecipes(e)
     document.getElementById("recipes").innerHTML="";
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
-    var input = {q: query.value, calories: calories.value};
+    var selectList = document.getElementById("amount")
+    var amount = selectList.options[selectList.selectedIndex].value;
+    var input = {q: query.value, calories: calories.value, to: amount};
     var recipes = await RecipeAPI.fetchRecipes(input);
 
     if(recipes.length == 0)
