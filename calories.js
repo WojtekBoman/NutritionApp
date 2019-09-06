@@ -21,7 +21,7 @@ async function findProduct(e)
     var name = document.getElementById("product");
     var amount = document.getElementById("amount");
 
-    var input = {ingr: name.value}
+    var input = {ingr: name.value};
     var hints = await FoodAPI.fetchFood(input);
 
     if(hints.length == 0)

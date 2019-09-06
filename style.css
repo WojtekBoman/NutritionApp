@@ -32,6 +32,11 @@ body
     margin: 0 10px;
 }
 
+.calculatorForm
+{
+    display: none;
+}
+
 #product
 {
     width: 200px;
