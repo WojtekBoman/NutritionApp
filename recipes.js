@@ -25,6 +25,7 @@ function showCalc()
 async function findRecipes(e)
 {
     e.preventDefault();
+    document.getElementById("recipes").innerHTML="";
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
     var input = {ingr: query.value, calories: calories.value};
