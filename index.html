@@ -11,13 +11,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="inputBar">
-            <form> 
-                <input type="text" id="product" placeholder="Product..." required>
-                <input type="number" id="amount" placeholder="Amount..." min="1" required>
-                <input type="submit" id="submit" value="Search">
-            </form>
-        </div>
+        <form class="inputBar"> 
+            <input type="text" id="product" placeholder="Product..." required>
+            <input type="number" id="amount" placeholder="Amount..." min="1" required><label for="amount">g</label>
+            <input type="submit" id="submit" value="Search">
+        </form>
         <div class="caloriesSum">
             <hr>
             <span><h1>Total number of kcal: <span id="number">0</span></h1></span>
