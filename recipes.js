@@ -50,9 +50,7 @@ function displayRecipes(recipes)
         var link = document.createElement('a');
         link.setAttribute('href', recipes[x].url);
         link.setAttribute('target', "_blank");
-        var recipeElement = document.createElement("li");
-        recipeElement.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
-        link.appendChild(recipeElement);
+        link.innerHTML = `<h3>${recipes[x].label}<br>${Math.floor(recipes[x].calories)}kcal</h3>`;
         document.getElementById("recipes").appendChild(link);
     }
 }
