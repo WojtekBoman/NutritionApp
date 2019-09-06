@@ -94,6 +94,9 @@ async function calculateCalories(e)
 
 function loadMore()
 {   
+    document.getElementById("moreBtn").disabled = true;
+    setTimeout(() => {document.getElementById("moreBtn").disabled = false},1000);
+
     var e=undefined;
     var from = document.getElementById("recipes").children.length;
     findRecipes(e, from);
