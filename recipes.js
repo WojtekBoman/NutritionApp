@@ -16,8 +16,9 @@ calculatorForm.style.display = "none";
 
 function showCalc()
 {
-    if (calculatorForm.style.display === "none") {
+    if (calculatorForm.style.display == "none") {
         calculatorForm.style.display = "flex";
+        getStorage();
     } else {
         calculatorForm.style.display = "none";
     }
@@ -69,5 +70,32 @@ async function calculateCalories(e)
 
     document.getElementById("calories").value = caloriesCalc;
     showCalc();
+    setStorage(weight, height, age, gender, activityLevel, bodyFat);
 }
 
+function setStorage(weight, height, age, gender, activityLevel, bodyFat)
+{
+    localStorage.setItem('weight', weight);
+    localStorage.setItem('height', height);
+    localStorage.setItem('age', age);
+    localStorage.setItem('gender', gender);
+    localStorage.setItem('activityLevel', activityLevel);
+    localStorage.setItem('bodyFat', bodyFat);
+}
+
+function getStorage()
+{
+    document.getElementById("weight").value = parseInt(localStorage.getItem('weight'));
+    document.getElementById("height").value = parseInt(localStorage.getItem('height'));
+    document.getElementById("age").value = parseInt(localStorage.getItem('age'));
+    if(localStorage.getItem('gender') == "male")
+    {
+        document.getElementById("male").checked = true;
+    }
+    else if(localStorage.getItem('gender') == "female")
+    {
+        document.getElementById("female").checked = true;
+    }
+    document.getElementById("activityLevel").value = parseInt(localStorage.getItem('activityLevel'));
+    document.getElementById("bodyFat").value = parseInt(localStorage.getItem('bodyFat'));
+}
