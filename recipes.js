@@ -38,9 +38,7 @@ async function findRecipes(e)
         document.getElementById("submit").disabled = false;
         return;
     }
-    console.log(recipes);
     displayRecipes(recipes);
-
 }
 
 function displayRecipes(recipes)
@@ -62,9 +60,9 @@ async function calculateCalories(e)
     var gender = document.getElementById("male").checked ? "male" : "female";
     var activityLevel = document.getElementById("activityLevel").value;
     var bodyFat = document.getElementById("bodyFat").value==="" ? 0 : document.getElementById("bodyFat").value;
-    console.log(weight, height, age, gender, activityLevel, bodyFat);
     var caloriesCalc = await calories.calculator(weight, height, age, gender, activityLevel, bodyFat);
 
     document.getElementById("calories").value = caloriesCalc;
+    showCalc();
 }
 
