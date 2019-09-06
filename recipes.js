@@ -30,8 +30,10 @@ async function findRecipes(e)
     var calories = document.getElementById("calories");
     var query = document.getElementById("query");
     var input = {q: query.value, calories: calories.value};
+    console.log(input);
     var recipes = await RecipeAPI.fetchRecipes(input);
 
+    console.log(recipes);
     if(recipes.length == 0)
     {
         alert("Recipes not found!");
@@ -64,7 +66,7 @@ async function calculateCalories(e)
     var age = document.getElementById("age").value;
     var gender = document.getElementById("male").checked ? "male" : "female";
     var activityLevel = document.getElementById("activityLevel").value;
-    var bodyFat = document.getElementById("bodyFat").value==="" ? 0 : document.getElementById("bodyFat").value;
+    var bodyFat = document.getElementById("bodyFat").value==="" ? 0 : document.getElementById("bodyFat").value/100;
     var caloriesCalc = await calories.calculator(weight, height, age, gender, activityLevel, bodyFat);
 
     document.getElementById("calories").value = caloriesCalc;
