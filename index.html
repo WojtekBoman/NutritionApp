@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js_playground</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js" defer></script>
+    <script src="calories.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+        </div>
+        <div class="menu">
+            <hr>
+            <ul>
+                <li><a href="index.html">Calories calculator</a></li>
+                <li><a href="index2.html">Recipe searcher</a></li>
+            </ul>
+            <hr>
+        </div>
+        <form class="inputBar"> 
+            <input type="text" id="product" placeholder="Product..." required>
+            <input type="number" id="amount" placeholder="Amount..." min="1" required><label for="amount">g</label>
+            <input type="submit" id="submit" value="Search">
+        </form>
+        <div class="caloriesSum">
+            <hr>
+            <span><h1>Total number of kcal: <span id="number">0</span></h1></span>
+        </div>
+        <div class="footer">
+                &copy; wiatrgonifale 2019
+        </div>
+        <ul id="products">
+
+        </ul>
+    </div>
+    <ul id="hints">
+        <div id="menubar">
+            <h2>Choose product:</h2><div onclick="closeHints()" style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>
+        </div>
+    </ul>
+</body>
+</html>
