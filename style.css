@@ -1,64 +1,225 @@
-.container {
-	display: grid;
-    background: rgb(246,246,246);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(150, 200, 80) 100%);
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,900&display=swap');
+
+:root {
+    --primary-font: #F0F8FF;
+    --hover: 
+}
+
+/* #hints li {
+    background: black;
+    color: white;
+} */
+
+html {
+    height: 100%;
+}
+
+body
+{
+    margin: 0;
+    //color: var(--primary-font);
+    font-family: 'Lato', sans-serif;
+    //background: linear-gradient(#dd3e54 ,#6be585);
+    //background: linear-gradient(180deg,  #215f00 , #e4e4d9);
+    //background: linear-gradient(180deg, rgba(255,255,255,1) 40%, rgb(150, 200, 80) 100%);
+    background: linear-gradient(180deg, white 0%,  #649173 100%);
+}
+
+hr {
+    border-top: 1px dotted var(--primary-font);
+}
+
+.container
+{
+    /* background: #05204A;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2); */
+
+    position: absolute;
+    display: flex;
+    width: 60%;
+    left: 20%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 600px;
+    //border: 1px solid;
+    border-radius: 3rem;
+    margin: 20px;
+    flex-direction: column;
+    /* background: rgb(246,246,246);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(150, 200, 80) 100%);*/
 }
 
 .header {
-    display: grid;
-    background-image: url("./img/header-bcg4.png");
-    min-height: 500px;
+    background-image: url("./img/header-bcg5.png");
+    min-height: 400px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
-.motto {
-    font-size: 3rem;
+.menu {
+    //padding: 10px;
 }
 
-.form {
-    background-color: burlywood;
-    min-height: 100px;
+.menu ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-decoration: none; 
+    list-style: none; 
 }
 
-.form ol li {
-    display: inline;
-    text-decoration: none;
-    margin: 2rem;
+.menu ul li {
+    //border: 1px solid black;
+}
+
+.menu a {
+    display: block;
     text-transform: uppercase;
-    margin: 0 2rem;
-}
-
-.display {
-    background-color: royalblue;
-    min-height: 100px;
-}
-
-.main {
-    background-color: darkgreen;
-	min-height: 100px;
-}
-
-.main ul li {
-    display: inline;
     text-decoration: none;
-    text-transform: uppercase;
     text-align: center;
-    margin: 0.5rem;
-    padding: 0.2rem;
-    border: 1px solid black;
+    color: var(--primary-font);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.menu a:hover {
+    color: #FF7F50;
 }
 
-.list1 li {
-    border: 2px solid black;
-    padding: 20px;
+input {
+    border-radius: 8px;
+    background: rgb(238, 246, 255);
+    padding:4px;
+    border: none;
 }
 
+.inputBar
+{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.inputBar > *
+{
+    height: 60%;
+    margin: 0 10px;
+}
+
+.calculatorForm
+{
+    display: none;
+}
+
+#product
+{
+    width: 200px;
+}
+
+#amount
+{
+    width: 100px;
+}
+
+#submit
+{
+    width: 85px;
+}
+
+.caloriesSum
+{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    color: var(--primary-font);
+    text-transform: uppercase;
+}
+.caloriesSum h1 {
+    //color: rgb(226, 226, 226);
+    //text-shadow: 5px 5px 14px rgba(00,00,00,0.1);
+}
+
+#products, #recipes
+{
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#products > *, #recipes > *
+{
+    display: flex;
+    width: 90%;
+    margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 80px;
+    border: 1px solid;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#hints
+{
+    position: absolute;
+    border: 1px solid;
+    width: 30%;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    top: 10%;
+    left: 35%;
+    background-color: rgb(212, 212, 212);
+    justify-content: space-between;
+    padding: 5px;
+    display: none;
+    border-radius: 20px;
+}
+
+#hints > *
+{
+    display: flex;
+    width: 100%;
+    margin: 5px;
+    height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+    align-items: center;  
+}
+
+#hints h2
+{
+    border: none;
+}
+
+
+
+#menubar
+{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
 
 .footer {
-    background-color: firebrick;
-    min-height: 50px;
-    padding: 2rem;
-}
+    color: var(--primary-font);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border: 1px var(--primary-font) solid;
+    border-radius: 3rem;
+    text-transform: uppercase;
+}-
 
