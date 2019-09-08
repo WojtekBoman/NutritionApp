@@ -3,7 +3,7 @@
 The application is used to search for products and their ingredients and to create a diet.
 
 ## Used API
-        <ul style="text-align:left">
+        <ul>
 This application used :
         <li>
 <a target="_blank" href="https://developer.edamam.com/edamam-docs-recipe-api">Recipe API</a></li>
