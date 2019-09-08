@@ -21,6 +21,11 @@ ul#recipes a {
     margin: 10px;
 }
 
+ul#recipes a:hover {
+    /* border: 1px solid var(--primary-font); */
+    animation: borderSwitch 0.8s forwards;
+}
+
 ul#recipes h3 {
     color: var(--secondary-font);
     
@@ -33,8 +38,7 @@ ul#recipes h3 {
     background-size: contain;
 }
 .x-product:hover {
-    background-image: url(./img/x-red.png);
-    background-size: contain;
+    animation: switchingX 0.8s forwards;
 }
 
 .x-list {
@@ -45,8 +49,7 @@ ul#recipes h3 {
 }
 
 .x-list:hover {
-    background-image: url(./img/x-red.png);
-    background-size: contain;
+    animation: switchingX 0.8s forwards;
 }
 
 #hints {
@@ -61,9 +64,10 @@ ul#products li {
     margin: 10px;
 }
 
-/* h3 {
-    border-radius: 50px;
-} */
+ul#hints li:hover {
+    animation: backgroundSwitch 0.8s forwards;
+}
+
 
 #hints li {
     border-radius: 50px;
@@ -75,6 +79,7 @@ ul#products li {
 html {
     height: 100vh;
     max-width: 100%;
+    animation: introLogo 1s forwards;
 }
 
 body
@@ -131,6 +136,10 @@ hr {
     list-style: none; 
 }
 
+#first-li {
+    border-right: 2px dotted var(--secondary-font);
+}
+
 .menu a {
     display: block;
     text-transform: uppercase;
@@ -140,9 +149,9 @@ hr {
     font-size: 1.3rem;
     font-weight: bold;
 }
-.menu a:hover {
-    color: var(--primary-font);
-    text-shadow: 1px 1px #aaaaaa;
+
+.menu li:hover > a {
+    animation: switchingColors 1s forwards;
 }
 
 input, select {
@@ -297,4 +306,24 @@ input, select {
     text-transform: uppercase;
 }
 
+@keyframes switchingColors {
+    100% {color: var(--primary-font);text-decoration: underline overline dotted var(--secondary-font);}
+}
 
+@keyframes introLogo {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes switchingX {
+    100% {background-image: url(./img/x-red.png);
+        background-size: contain;}
+}
+
+@keyframes borderSwitch {
+    100% {border: 1px solid var(--primary-font);}
+}
+
+@keyframes backgroundSwitch {
+    100% {background-color: black;}
+}
