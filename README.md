@@ -83,4 +83,54 @@ The calculator requires the following parameters:
       <li>Body fat</li>
  </ul> 
  
+ #### Implementation
+ 
+ Implementation of calorie calculator is based on <b>Revised Harris-Benedict Equation</b> :
+ For men: BMR = 13.397W + 4.799H - 5.677A + 88.362
+ For women: BMR = 9.247W + 3.098H - 4.330A + 447.593
+ Where :
+ <ul>
+  <li>W is body weight in kg</li>
+  <li>H is body height in cm</li>
+  <li>A is age</li>
+  <li>F is body fat in percentage</li>
+  </ul>
+  
+   ```javascript
+ calculator: function(weight, height, age, gender, activityLevel = 0, bodyFat = 0){
+        let bmr;
+        if(bodyFat == 0) {
+            bmr = gender === 'female' ? 
+            9.247 * weight + 3.098 * height - 4.330 * age + 447.593 : 
+            13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
+        } else {
+            bmr = 370 + 21.6 * (1 - bodyFat) * weight;
+        }
+        
+        switch (parseInt(activityLevel)) {
+            case 1: // Sedentary: little or no exercise
+                return this.Calories = Math.floor(bmr * 1.2);
+            case 2: // Light: exercise 1-3 times/week
+                return this.Calories = Math.floor(bmr * 1.375);
+            case 3: // Moderate: exercise 4-5 times/week
+                return this.Calories = Math.floor(bmr * 1.465);
+            case 4: // Active: daily exercise or intense exercise 3-4 times/week
+                return this.Calories = Math.floor(bmr * 1.55);
+            case 5: // Very Active: intense exercise 6-7 times/week
+                return this.Calories = Math.floor(bmr * 1.725);
+            case 6: // Extra Active: very intense exercise daily, or physical job
+                return this.Calories = Math.floor(bmr * 1.9);
+            default: // case 0 - Basal Metabolic Rate (BMR)
+                return this.Calories = Math.floor(bmr);
+            /*
+            Exercise: 15-30 minutes of elevated heart rate activity.
+            Intense exercise: 45-120 minutes of elevated heart rate activity.
+            Very intense exercise: 2+ hours of elevated heart rate activity.
+            +- 500 cal ~= +- 0.5 kg per week
+            max 1 kg per week
+            src: https://www.calculator.net/calorie-calculator.html
+            */
+        }
+```
+ 
  
