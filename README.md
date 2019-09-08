@@ -85,9 +85,12 @@ The calculator requires the following parameters:
  
  #### Implementation
  
- Implementation of calorie calculator is based on <b>Revised Harris-Benedict Equation</b> :
- For men: BMR = 13.397W + 4.799H - 5.677A + 88.362
- For women: BMR = 9.247W + 3.098H - 4.330A + 447.593
+ <p>Implementation of calorie calculator is based on <b>Revised Harris-Benedict Equation :</b></p> 
+  <br>
+ <p>For men: BMR = 13.397W + 4.799H - 5.677A + 88.362</p>
+ <br>
+ <p>For women: BMR = 9.247W + 3.098H - 4.330A + 447.593</p>
+ <br>
  Where :
  <ul>
   <li>W is body weight in kg</li>
