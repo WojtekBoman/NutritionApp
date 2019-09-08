@@ -98,7 +98,7 @@ function addProduct(product)
     products.push(product);
     document.getElementById("number").innerHTML = parseInt(document.getElementById("number").innerHTML, 10) + product.totalCalories;
     var productElement = document.createElement("li");       
-    productElement.innerHTML = `<h3>${product.name}<br>${product.totalCalories}kcal ${product.amount}g</h3><div style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>`;
+    productElement.innerHTML = `<h3>${product.name}<br>${product.totalCalories}kcal ${product.amount}g</h3><div style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(./img/x.png); background-size: contain;'></div>`;
     document.getElementById("products").appendChild(productElement);
     productElement.children[1].addEventListener("click", removeItem);
 }

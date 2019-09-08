@@ -6,9 +6,21 @@
 }
 
 /* #hints li {
-    background: black;
-    color: white;
-} */
+    background: linear-gradient(180deg, #bdc3c7 0%,  #2c3e50 100%);
+}  */
+
+#hints {
+    background: linear-gradient(180deg,#232526 0%,  #414345 15%);   
+    opacity: 0.92;
+    
+}
+
+#hints li {
+    border-radius: 50px;
+    padding: 3vh;
+    justify-content: center;
+}
+
 
 html {
     height: 100vh;
@@ -28,7 +40,7 @@ body
 }
 
 hr {
-    border-top: 1px dotted var(--primary-font);
+    border-top: 1px solid var(--primary-font);
 }
 
 .container
@@ -63,7 +75,7 @@ hr {
 }
 
 .menu {
-    //padding: 10px;
+    padding: 10px;
 }
 
 .menu ul {
@@ -104,7 +116,9 @@ input {
     height: 50px;
     align-items: baseline;
     justify-content: center;
+
 }
+
 
 .inputBar > *
 {
@@ -119,7 +133,7 @@ input {
 
 #product
 {
-    width: 200px;
+    width: 150px;
 }
 
 #amount
@@ -130,6 +144,22 @@ input {
 #submit
 {
     width: 85px;
+}
+
+#calories {
+    width: 150px;
+}
+
+#query {
+    width: 150px;
+}
+
+#amount2 {
+    width: 50px;
+}
+
+#calc {
+    width: 100px;
 }
 
 .caloriesSum
@@ -162,7 +192,7 @@ input {
 {
     display: flex;
     width: 90%;
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
     box-sizing: border-box;
     height: 80px;
