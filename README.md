@@ -2,7 +2,10 @@
 
 The application is used to search for products and their ingredients and to create a diet.
 
- <p align="center">
-  <img width="250" height="250" src="https://unsplash.com/photos/4_jhDO54BYg" alt="Food image">
-</p>
-
+## Used API
+<ul>This application used :
+        <li>
+<a target="_blank" href="https://developer.edamam.com/edamam-docs-recipe-api">Recipe API</a></li>
+        <li>
+<a target="_blank" href="https://developer.edamam.com/food-database-api-docs">Food Datebase API</a></li>
+       </ul>
