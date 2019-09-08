@@ -59,3 +59,28 @@ const RecipeAPI = {
 This object allows to get recipes matched to input.
 
 
+##Calorie Calculator
+
+Nutrition App is ideal for people starting a healthy lifestyle. The application has a calorie calculator that can calculate the optimal number of calories that we should eat during the day. 
+The calculator requires the following parameters:
+<ul>
+      <li>Weight</li>
+      <li>Height</li>
+      <li>Age</li>
+      <li>Gender</li>
+      <li>Activity Level
+        <ul>
+          <li>Sedentary: little or no exercise</li>
+          <li>Light: exercise 1-3 times/week</li>
+          <li>Moderate: exercise 4-5 times/week</li>
+          <li>Active: daily exercise or intense exercise 3-4 times/week</li>
+          <li>Very Active: intense exercise 6-7 times/week</li>
+          <li>Extra Active: very intense exercise daily, or physical job</li>
+          <li>Basal Metabolic Rate (BMR)</li>
+        </ul>
+      </li>
+      <li>Gender</li>
+      <li>Body fat</li>
+ </ul> 
+ 
+ 
