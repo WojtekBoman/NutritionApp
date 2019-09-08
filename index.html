@@ -5,30 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>js_playground</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="api.js" defer></script>
-    <script src="calories.js" defer></script>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
     <div class="container">
-        <form class="inputBar"> 
-            <input type="text" id="product" placeholder="Product..." required>
-            <input type="number" id="amount" placeholder="Amount..." min="1" required><label for="amount">g</label>
-            <input type="submit" id="submit" value="Search">
-        </form>
-        <div class="caloriesSum">
-            <hr>
-            <span><h1>Total number of kcal: <span id="number">0</span></h1></span>
-            <hr>
+        <div class="header">
+            <p class="motto">Nie licz na cud, licz kalorie!</p>
         </div>
-        <ul id="products">
-
-        </ul>
+        <div class="form">
+            <ol>
+                <form>
+                    <li>
+                        <label for="wybor">Wybór jedzenia</label>
+                        <input type="text" id="" name="wybor" placeholder="test">
+                    </li>
+                    <li>
+                        <label for="ilosc">Ilość</label>
+                        <input type="text" id="" name="ilosc" placeholder="test">
+                    </li>
+                    <li>
+                        <label for="jednostka">Jednostka</label>
+                        <select id="" name="jednostka" placeholder="test">
+                            <option value="ml">ml (mililitr)</option>
+                            <option value="l">l (litr)</option>
+                            <option value="g">g (gram)</option>
+                            <option value="kg">kg (kilogram)</option>
+                    </li>
+                    <li>
+                        <input type="submit" value="Przelicz">
+                    </li>
+                                     
+                </form>
+            </ol>
+        <div class="display">kalorie</div>
+        <div class="main">
+            <ol>
+                <li>
+                    <ul>
+                        <li class="product">nazwa produktu</li>
+                        <li class="amount">ilość</li>
+                        <li class="unit">jednostka</li>
+                        <li class="calories">kalorie</li>
+                    </ul>
+                </li>
+                <li class="list2">
+                    <ul>
+                        <li class="product">mleko</li>
+                        <li class="amount">2</li>
+                        <li class="unit">L</li>
+                        <li class="calories">kalorie</li>
+                    </ul>
+                </li>
+                <li class="list3">
+                    <ul>
+                        <li class="product">nazwa produktu</li>
+                        <li class="amount">ilość</li>
+                        <li class="unit">L</li>
+                        <li class="calories">kalorie</li>
+                    </ul>
+                </li>
+            </ol>
+            wynik
+        </div>
+        <div class="footer">niesamowita stopka</div>
     </div>
-    <ul id="hints">
-        <div id="menubar">
-            <h2>Choose product:</h2><div onclick="closeHints()" style='width: 40px; height: 40px; border: 1px solid; border-radius: 50%; background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-round-512.png); background-size: contain;'></div>
-        </div>
-    </ul>
 </body>
 </html>
