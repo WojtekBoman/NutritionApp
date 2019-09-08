@@ -6,9 +6,9 @@ The application is used to search for products and their ingredients and to crea
 
   <ul>
         <li>
-          <a target="_blank" href="https://developer.edamam.com/edamam-docs-recipe-api">Recipe API</a>
+          <a href="https://developer.edamam.com/edamam-docs-recipe-api" target="_blank">Recipe API</a>
         </li>
         <li>
-          <a target="_blank" href="https://developer.edamam.com/food-database-api-docs">Food Datebase API</a>
+          <a href="https://developer.edamam.com/food-database-api-docs" target="_blank">Food Datebase API</a>
         </li>
   </ul>
