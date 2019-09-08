@@ -59,7 +59,7 @@ const RecipeAPI = {
 This object allows to get recipes matched to input.
 
 
-##Calorie Calculator
+## Calorie Calculator
 
 Nutrition App is ideal for people starting a healthy lifestyle. The application has a calorie calculator that can calculate the optimal number of calories that we should eat during the day. 
 The calculator requires the following parameters:
