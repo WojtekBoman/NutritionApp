@@ -135,5 +135,15 @@ The calculator requires the following parameters:
             */
         }
 ```
+
+## Example of use
+
+<ol>
+  <li>
+   Fill the inputs <br> 
+  ![STEP 1](https://user-images.githubusercontent.com/47774969/64988453-c5342380-d8cb-11e9-8223-9c8fa3c51ea7.PNG)
+  </li>
+  
+ </ol>
  
  
