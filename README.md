@@ -140,4 +140,8 @@ The calculator requires the following parameters:
 
 ![STEP 1](https://user-images.githubusercontent.com/47774969/64988453-c5342380-d8cb-11e9-8223-9c8fa3c51ea7.PNG)
   
- 
+![STEP 2](https://user-images.githubusercontent.com/47774969/64988726-69b66580-d8cc-11e9-8d5f-340a1ef85ee2.PNG)
+
+![STEP 3](https://user-images.githubusercontent.com/47774969/64988737-6de28300-d8cc-11e9-91e9-9c87a677582c.PNG)
+
+![STEP 4](https://user-images.githubusercontent.com/47774969/64988742-71760a00-d8cc-11e9-84e4-71a195f37909.PNG)
