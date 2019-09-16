@@ -140,10 +140,10 @@ The calculator requires the following parameters:
 
 
 ![STEP 1](https://user-images.githubusercontent.com/47774969/64988453-c5342380-d8cb-11e9-8223-9c8fa3c51ea7.PNG)
-## Fill in the blanks
+##### 1. Fill in the blanks
 ![STEP 2](https://user-images.githubusercontent.com/47774969/64988726-69b66580-d8cc-11e9-8d5f-340a1ef85ee2.PNG)
-## Choose the right product
+##### 2. Choose the right product
 ![STEP 3](https://user-images.githubusercontent.com/47774969/64988983-e0ebf980-d8cc-11e9-92a0-0aef572ab1b8.PNG)
-## Look at the total calories
+##### 3. Look at the total calories
 ![STEP 4](https://user-images.githubusercontent.com/47774969/64988994-e5181700-d8cc-11e9-8bbc-22bf4bbcb516.PNG)
 
