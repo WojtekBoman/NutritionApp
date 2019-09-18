@@ -147,3 +147,14 @@ The calculator requires the following parameters:
 #### Look at the total calories
 ![STEP 4](https://user-images.githubusercontent.com/47774969/64988994-e5181700-d8cc-11e9-8bbc-22bf4bbcb516.PNG)
 
+
+## Credits
+
+<ul> Authors: 
+  <li>Miłosz Stolarczyk<li>
+  <li>Julia Nasiadka</li>
+  <li>Patrycja Czerniakiewicz</li>
+  <li>Maciej Szymczyk</li>
+  <li>Filip Wanat</li>
+  <li>Wojciech Boman</li>
+ </ul>
