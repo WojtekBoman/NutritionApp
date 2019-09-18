@@ -150,7 +150,7 @@ The calculator requires the following parameters:
 
 ## Credits
 
-<ul> Authors: 
+<ul> <b>Authors :</b> 
   <li>Miłosz Stolarczyk</li>
   <li>Julia Nasiadka</li>
   <li>Patrycja Czerniakiewicz</li>
